@@ -1,0 +1,159 @@
+{
+  "repo": "Teamelite12/stacked-pr-audit",
+  "prefix": "audit/stacked-20261119",
+  "scenarios": [
+    {
+      "number": 1,
+      "scenario": "Create Stack from Existing PRs",
+      "fixture": "S01",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/2",
+      "path": "Create stack recommendation > preview > confirm.",
+      "remarks": "Two dependent PRs are intentionally unstacked. Complete creation during the audit.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 2,
+      "scenario": "Create Stack with a New PR",
+      "fixture": "S02",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/compare/audit/stacked-20261119/s02/layer-1...audit/stacked-20261119/s02/layer-2?expand=1",
+      "path": "Base/compare selectors > Create pull request > Create stack.",
+      "remarks": "The lower PR already exists. The upper branch is pushed without a PR. Base: `audit/stacked-20261119/s02/layer-1`; compare: `audit/stacked-20261119/s02/layer-2`.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 3,
+      "scenario": "Stack Header",
+      "fixture": "S03",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/5",
+      "path": "Stack icon and layer number beside the PR title > stack details.",
+      "remarks": "Native two-PR stack; use the persistent header on the same page.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 4,
+      "scenario": "Stack Context in PR List",
+      "fixture": "S03",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pulls?q=is%3Apr%20is%3Aopen%20S03",
+      "path": "Pull requests > S03 results > stack indicator > stack details and PR links.",
+      "remarks": "The native stack indicator belongs to the S03 fixtures.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 5,
+      "scenario": "Stack Map",
+      "fixture": "S03",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/5",
+      "path": "Merge section at the bottom > stack map > PR links and statuses.",
+      "remarks": "Use the same native stack as scenario 3.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 6,
+      "scenario": "Stack Keyboard Shortcuts",
+      "fixture": "S03",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/5",
+      "path": "Shift+J / Shift+K > destination PR heading and layer.",
+      "remarks": "Navigate in both directions. The two PRs provide the stack boundaries.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 7,
+      "scenario": "Add to Stack",
+      "fixture": "S07",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/8",
+      "path": "Stack icon > Add to stack > branch selector > PR form.",
+      "remarks": "Choose `audit/stacked-20261119/s07/layer-3`. It is pushed and does not have a PR.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 8,
+      "scenario": "Rebase Stack",
+      "fixture": "S08",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/11",
+      "path": "Merge section > Rebase stack > confirmation > status.",
+      "remarks": "The base has an independent additional commit. For approval retention, first configure the reviews rule and approve both PRs as gigachad25. Then rebase as the main account and inspect retained approvals and replacement commit signatures. Do not use Update branch instead.",
+      "status": "Fixture prepared; administrator setup needed"
+    },
+    {
+      "number": 9,
+      "scenario": "Stack Merge Requirements",
+      "fixture": "S09",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/14",
+      "path": "Merge section > required approval message > review details and blocked merge control.",
+      "remarks": "Configure the reviews ruleset first. Leave both PRs unapproved to preserve the restriction.",
+      "status": "Fixture prepared; administrator setup needed"
+    },
+    {
+      "number": 10,
+      "scenario": "Merge Stack",
+      "fixture": "S10",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/17",
+      "path": "Merge section > included PRs > merge method > confirmation.",
+      "remarks": "Merge the upper PR only during the approved audit to merge both layers into the isolated merge-base.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 11,
+      "scenario": "Bypass Stack Merge Requirements",
+      "fixture": "S11",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/19",
+      "path": "Lowest PR > merge restriction > bypass option > confirmation.",
+      "remarks": "Configure the bypass ruleset first. Use the main Admin account; keep the required approval missing. Do not use the upper PR.",
+      "status": "Fixture prepared; administrator setup needed"
+    },
+    {
+      "number": 12,
+      "scenario": "Stack Merge Queue",
+      "fixture": "S12",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/23",
+      "path": "Merge when ready > confirmation > queued status > merge queue link > merge-group details.",
+      "remarks": "Configure the queue rule and working required check first. Select both layers. The prepared workflow supports pull_request and merge_group; its queue job pauses for 180 seconds so the queue details can be inspected before merging.",
+      "status": "Fixture prepared; administrator setup needed"
+    },
+    {
+      "number": 13,
+      "scenario": "Stack Auto-merge",
+      "fixture": "S13",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/26",
+      "path": "Contiguous PR-group selection > auto-merge > confirmation > status/cancel.",
+      "remarks": "Configure the reviews rule and enable Allow auto-merge first. Leave approvals missing until after the enabled/cancel state is audited. If the stack-specific auto-merge UI is absent, mark blocked rather than substituting single-PR auto-merge.",
+      "status": "Fixture prepared; administrator setup needed"
+    },
+    {
+      "number": 14,
+      "scenario": "Partial Merge and Automatic Retargeting",
+      "fixture": "S14",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/28",
+      "path": "Merge bottom PR only > open upper PR > updated base and stack position.",
+      "remarks": "After merging the bottom PR, open https://github.com/Teamelite12/stacked-pr-audit/pull/29. Do not merge the upper PR; inspect automatic retargeting and status.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 15,
+      "scenario": "Branching Stack Retargeting",
+      "fixture": "S15",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/34",
+      "path": "Merge parent bottom PR > delete its audit-only branch > dependent bottom PR > base and activity.",
+      "remarks": "First merge https://github.com/Teamelite12/stacked-pr-audit/pull/31 and delete only `audit/stacked-20261119/s15p/layer-1`. Then inspect this dependent PR. If it retargets to main, do not merge it into main.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 16,
+      "scenario": "Stack Membership Timeline",
+      "fixture": "S16",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/37",
+      "path": "PR activity timeline > added-to-stack and removed-from-stack events.",
+      "remarks": "Both event types already exist on this fixture. For an active added-membership link, also use https://github.com/Teamelite12/stacked-pr-audit/pull/5. Use the activity stream if Conversation is absent.",
+      "status": "Fixture prepared"
+    },
+    {
+      "number": 17,
+      "scenario": "Unstack Pull Requests",
+      "fixture": "S17",
+      "url": "https://github.com/Teamelite12/stacked-pr-audit/pull/41",
+      "path": "Stack options > Unstack > confirmation > remaining PRs and base branches.",
+      "remarks": "The dedicated native stack is open, unmerged, and unqueued. Unstack only during the audit.",
+      "status": "Fixture prepared"
+    }
+  ]
+}
