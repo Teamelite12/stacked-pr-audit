@@ -1,0 +1,36 @@
+name: Stack audit checks
+
+on:
+  pull_request:
+  merge_group:
+    types: [checks_requested]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-check:
+    name: Audit fixture check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate audit fixture files
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          assert Path("README.md").is_file(), "Repository README is missing"
+          fixtures = sorted(Path("audit/stacked-pr").glob("*-layer-*.txt"))
+          for fixture in fixtures:
+              text = fixture.read_text()
+              assert text.strip(), f"Empty audit fixture: {fixture}"
+              assert "Fixture:" in text, f"Missing fixture identifier: {fixture}"
+              assert "Layer:" in text, f"Missing layer number: {fixture}"
+          print(f"Validated README and {len(fixtures)} audit fixture files.")
+          PY
+      - name: Keep merge-group details visible for the audit
+        if: github.event_name == 'merge_group'
+        run: sleep 180
