@@ -4,8 +4,9 @@ Test repository for the 17 GitHub stacked pull request accessibility scenarios.
 
 ## Setup status
 
-This README describes the planned setup. Audit branches, pull requests, native
-stacks, checks, account access, and repository rules still need to be configured.
+The audit branches, pull requests, native stacks, and workflow are prepared.
+Repository rules, auto-merge, workflow approvals, and account access must be
+completed or confirmed using the guide linked below.
 
 ## Test accounts
 
@@ -68,3 +69,10 @@ End each scenario with:
 > Verify whether step 2, 3 and 4 are accessible and WCAG compliant or not.
 
 Adjust the step numbers when the scenario covers different interaction steps.
+
+
+## Prepared audit fixtures
+
+[Open all 17 exact UI paths, direct PR links, account roles, and administrator setup](audit/stacked-pr/README.md).
+
+The fixtures are created. Some settings may still require an administrator; see the readiness notes in the guide before executing the audit.
