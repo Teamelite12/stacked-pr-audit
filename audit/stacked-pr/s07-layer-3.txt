@@ -1,0 +1,3 @@
+Prepared third layer for Add to stack.
+Fixture: S07
+Layer: 3
